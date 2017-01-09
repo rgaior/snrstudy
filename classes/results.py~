@@ -1,0 +1,21 @@
+import utils
+import math
+import numpy as np
+import constant
+import waveform
+import detector
+from scipy import signal
+
+class Analyse:
+    def __init__(self, det = None):
+        self.det = det
+        
+
+    def switchsignaldirection(self,wf):
+        mean = self.getmean(wf)
+#        print mean
+        #newamp = (wf.amp-mean)
+        newamp = mean - (wf.amp-mean)
+        newwf = waveform.Waveform(wf.time,newamp)
+        return newwf
+        
